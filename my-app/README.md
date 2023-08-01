@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+## [Fabi8s Notes (CLICKME)](FABI8SNOTES.md)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
