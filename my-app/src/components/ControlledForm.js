@@ -5,7 +5,9 @@ export class ControlledForm extends Component {
       super(props)
     
       this.state = {
-         name: ''
+         name: '',
+         category: '',
+         comments: ''
       }
     }
 
@@ -15,10 +17,38 @@ export class ControlledForm extends Component {
       });
   }
 
+  handleCategoryChange = (event) => {
+    this.setState({
+      category: event.target.value
+    })
+  }
+
+  handleCommentsChange = (event) => {
+    this.setState({
+      comments: event.target.value
+    })
+  }
+
+  // cool refactoring
+
+  // handleChange = (event) => {
+  //   const {name,value} = event.target
+  //   this.setState({
+  //     [name]: value
+  //   })
+  // }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log(this.state)
+  }
+
   render() {
     return (
       <div>
-        <form>
+        <h2>Please fill out the form below</h2>
+        <form onSubmit={this.handleSubmit}>
+          <div>
             <label htmlFor='id-name'>Your Name:</label>
             <input
                 value={this.state.name}
@@ -27,6 +57,19 @@ export class ControlledForm extends Component {
                 name="name"
                 onChange={this.handleNameChange}
             />
+          </div>
+          <div>
+            <label htmlFor='id-category'>Query category:</label>
+            <select id="id-category" name="category" onChange={this.handleCategoryChange}>
+              <option value="website">Website issue</option>
+              <option value="order">Order issue</option>
+              <option value="general">General inquiry</option>
+            </select>
+          </div>
+          <div>
+          <label htmlFor='id-comments'>Comments:</label>
+          <textarea onChange={this.handleCommentsChange} id="id-comments" name="comments" value={this.state.comments}/>
+          </div>
             <input type='submit' value="submit"/>
         </form>
       </div>
