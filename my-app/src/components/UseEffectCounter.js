@@ -17,8 +17,13 @@ function UseEffectCounter() {
     useEffect(() => {
         console.log('Creating Timer')
         const interval = setInterval(() => {
+            console.log('interval executed');
             setTime(time => time + 1)
         }, 1000);
+        return () => {
+            console.log('cleaning up!');
+            clearInterval(interval)
+        }
     }, []) //passing an empty array makes the useEffect running only one time
     
   return (
